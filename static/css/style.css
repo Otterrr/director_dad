@@ -27,6 +27,21 @@ h4 {
 
 .sidenav li>a {
     color: white;
+    font-size: 16px;
+    padding-right: 24px;
+}
+
+.sidenav li>a>i {
+    vertical-align: middle;
+    padding: 0;
+    margin: 0;
+    line-height: 60px;
+    font-size: 24px;
+}
+
+#sidenav-close {
+    background-color: #303030 !important;
+    min-height: 64px;
 }
 
 #sign-up {
