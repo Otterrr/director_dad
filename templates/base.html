@@ -19,27 +19,25 @@
 
     <header>
         <!-- top navbar -->
-        <nav class="nav-extended text-shadow blue-grey darken-4">
+        <nav class="nav-extended text-shadow grey darken-4">
             <div class="nav-wrapper">
-                <a href="{{ url_for('director_dad') }}" class="brand-logo">Director Dad</a>
+                <a href="{{ url_for('get_films') }}" class="brand-logo">
+                    <button  id="director-dad" class="btn yellow darken-2 black-text waves-effect waves-dark">Director Dad</button>
+                </a>
                 <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="fas fa-bars"></i></a>
                 <ul class="right hide-on-med-and-down">
                     <li><a href="#">Home</a></li>
                     <li><a href="{{ url_for('get_films') }}">Films</a></li>
-                    <li><a href="#">Profile</a></li>
-                    <li><a href="#">New Review</a></li>
-                    <li><a href="#">Manage Films</a></li>
-                    <li><a href="#">Manage Genres</a></li>
                     <li><a href="#">Log Out</a></li>
                     <li><a href="#">Log In</a></li>
-                    <li><a href="#">Register</a></li>
+                    <li><a href="{{ url_for('register') }}">Sign Up</a></li>
                 </ul>
             </div>
         </nav>
 
         <!-- mobile navbar -->
-        <ul class="sidenav" id="mobile-demo">
-            <li><h4 class="center-align light-blue-grey-text text-darken-4">Director Dad</h4></li>
+        <ul class="sidenav text-shadow grey darken-4 white-text" id="mobile-demo">
+            <li><h4 class="center-align grey darken-4">Director Dad</h4></li>
             <li><a href="#">Home</a></li>
             <li><a href="{{ url_for('get_films') }}">Films</a></li>
             <li><a href="#">Profile</a></li>
@@ -48,7 +46,7 @@
             <li><a href="#">Manage Genres</a></li>
             <li><a href="#">Log Out</a></li>
             <li><a href="#">Log In</a></li>
-            <li><a href="#">Register</a></li>
+            <li><a href="{{ url_for('register') }}">Register</a></li>
         </ul>
     </header>
 

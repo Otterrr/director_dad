@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+{% block content %}
+
+<div class="row white">
+    <h3 id="sign-up" class="center-align black-text">Sign Up</h3>
+    <form class="col s12 m8 offset-m2" method="POST" action="{{ url_for('register') }}">
+        <div class="card-panel grey darken-4">
+            <!-- Username -->
+            <div class="row">
+                <div class="input-field col s12">
+                    <i class="fas fa-user-circle prefix white-text text-darken-4"></i>
+                    <input id="username" name="username" type="text" minlength="5" maxlength="15"
+                        pattern="^[a-zA-Z0-9]{5,15}$" class="white-text validate" required>
+                    <label class="white-text" for="username">Username</label>
+                </div>
+            </div>
+            <!-- Password -->
+            <div class="row">
+                <div class="input-field col s12">
+                    <i class="fas fa-exclamation-circle prefix white-text text-darken-4"></i>
+                    <input id="password" name="password" type="password" minlength="5" maxlength="15"
+                        pattern="^[a-zA-Z0-9]{5,15}$" class="white-text validate" required>
+                    <label class="white-text" for="password">Password</label>
+                </div>
+            </div>
+            <!-- Sign Up -->
+            <div class="row">
+                <button type="submit" id="submit-button" class="col s12 btn btn-large yellow darken-2 black-text waves-effect waves-dark">
+                    Sign Up <i class="fas fa-arrow-alt-circle-right"></i>
+                </button>
+            </div>
+        </div>
+        <div class="sign-up-end">
+        </div>
+    </form>
+</div>
+
+{% endblock %}

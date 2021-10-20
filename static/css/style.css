@@ -1,3 +1,48 @@
+body {
+    background-color: black;
+    color: white;
+}
+
+#director-dad {
+    font-size: 30px;
+    font-weight: 500;
+    border-radius: 4px;
+    height: auto;
+    line-height: normal;
+    padding: 0px 15px 4px;
+    margin-bottom: 10px;
+}
+
+
 .text-shadow {
     text-shadow: 2px 2px 2px rgba(0,0,0,0.5)
+}
+
+h4 {
+    text-transform: uppercase;
+}
+
+.sidenav li>a {
+    color: white;
+}
+
+#sign-up {
+    margin-top: 0px;
+    padding-top: 15px;
+    font-weight: 500;
+    text-transform: uppercase;
+}
+
+#username, #password {
+    border-bottom: 1px solid white;
+}
+
+#submit-button {
+    font-size: 22px;
+    font-weight: 500;
+    border-radius: 4px;
+}
+
+.sign-up-end {
+    height: 100px;
 }
