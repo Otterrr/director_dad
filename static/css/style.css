@@ -3,15 +3,45 @@ body {
     color: white;
 }
 
-#director-dad {
-    font-size: 30px;
-    font-weight: 500;
-    border-radius: 4px;
-    height: auto;
-    line-height: normal;
-    padding: 0px 15px 4px;
-    margin-bottom: 10px;
+.nav-menu {
+   list-style-type: none;
+  display: inline; 
 }
+
+.nav-menu>li {
+    height: 64px;
+    padding: 0px 12px;
+    align-items: center;
+}
+#director-dad {
+    font-size: 16px;
+    font-weight: 700;
+    border-radius: 4px;
+    padding: 0;
+    width: 100px;
+    height: auto;
+    line-height: 20px;
+}
+
+#autocomplete-input {
+    color: white;
+    border-bottom: none;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+}
+
+#autocomplete-input>label {
+    transform: translateY(16px);
+    color: white;
+    border-bottom: none;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+}
+
+.input-field>label:not(label-icon).active {
+    transform: translateY(12px) !important;
+}
+
 
 .flashes h4 {
     line-height: 2;
@@ -23,20 +53,6 @@ body {
 
 h4 {
     text-transform: uppercase;
-}
-
-.sidenav li>a {
-    color: white;
-    font-size: 16px;
-    padding-right: 24px;
-}
-
-.sidenav li>a>i {
-    vertical-align: middle;
-    padding: 0;
-    margin: 0;
-    line-height: 60px;
-    font-size: 24px;
 }
 
 #sidenav-close {
