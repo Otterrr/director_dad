@@ -116,8 +116,9 @@ nav .input-field label {
     text-shadow: none;
 }
 
-.input-field>label:not(label-icon).active {
+.input-field label:not(label-icon).active {
     transform: translateY(0px) !important;
+    display: none;   
 }
 
 
@@ -159,7 +160,17 @@ h4 {
     height: 100px;
 }
 
+.input-field label:not(label-icon).active {
+    transform: translateY(0px) !important;
+    display: none;   
+}
 
+
+/* FILMS */
+
+.collapsible, .collapsible-header, .collapsible-body {
+    border: none !important;
+}
 
 
 
@@ -170,16 +181,7 @@ h4 {
 /* MEDIA */
 
 @media only screen and (max-width: 700px) {
-    .row .col.s1 {
-        width: auto;
-    }
-    .row .col.s2 {
-        width: auto;
-    }
-    .row .col.s3 {
-        width: auto;
-    }
-    .row .col.s6 {
+    .row .col.s1, .row .col.s2, .row .col.s3, .row .col.s6 {
         width: auto;
     }
 }
