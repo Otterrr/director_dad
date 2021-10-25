@@ -5,12 +5,13 @@
         {% for film in films %}
         <li>
             <div class="collapsible-header white-text grey darken-4 text-shadow">
-                <i class="fas fa-caret-down"></i>
+                <i class="fas fa-angle-down"></i>
                 <strong>{{ film.film_name }}</strong>: {{ film.release_date }}
             </div>
             <div class="collapsible-body">
                 <strong>{{ film.genre_name }} - {{ film.age_rating }} - {{ film.duration }}</strong>
                 <p>{{ film.film_description }}</p>
+                <p>by: {{ film.created_by }}</p>
             </div>
         </li>
         {% endfor %}

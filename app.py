@@ -99,6 +99,26 @@ def logout():
     return redirect(url_for("login"))
 
 
+@app.route("/manage_films", methods=["GET", "POST"])
+def manage_films():
+    if request.method == "POST":
+        film = {
+            "film_name": request.form.get("film_name"),
+            "genre_name": request.form.get("genre_name"),
+            "release_date": request.form.get("release_date"),
+            "film_description": request.form.get("film_description"),
+            "age_rating": request.form.get("age_rating"),
+            "duration": request.form.get("duration"),
+            "created_by": session["user"]
+        }
+        mongo.db.films.insert_one(film)
+        flash("Film Successfully Added")
+        return redirect(url_for("manage_films"))
+
+    genres = mongo.db.genres.find().sort("genre_name", 1)
+    return render_template("manage_films.html", genres=genres)
+
+
 if __name__ == "__main__":
     app.run(host=os.environ.get("IP"),
             port=int(os.environ.get("PORT")),
