@@ -184,6 +184,13 @@ h4 {
     }
 }
 
+@media only screen and (max-width: 960px) {
+    .container {
+        margin: 0 auto !important;
+        width: 100%;
+    }
+}
+
 @media only screen and (max-width: 539px) {
     #search-bar {    
         display: none !important;
