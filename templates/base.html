@@ -33,13 +33,13 @@
                                 class="btn yellow darken-2 black-text waves-effect waves-light">Director<br>Dad</button>
                         </a>
                     </li>
-                    <li class="col s7 center">
+                    <li id="search-bar" class="col s6 center">
                         <div class="input-field">
                             <input type="text" id="autocomplete-input" class="white grey-text autocomplete">
                             <label for="autocomplete-input">Search Films</label>
                         </div>
                     </li>
-                    <li class="col s2 center" id="nav-links">
+                    <li class="col s3 center">
                         <ul>
                             {% if session.user %}
                             <li><a href="{{ url_for('logout') }}">Log Out</a></li>

@@ -10,21 +10,15 @@ body {
 
 #navbar {
     background: linear-gradient(to right, black, #212121, #212121, black);
+    margin-bottom: 20px;
+    padding-bottom: 20px;
 }
 #nav-button {
     padding-left: 24px;
 }
 
-#nav-links {
-    padding-right: 12px;
-}
-
-.nav-menu {
-   list-style-type: none;
-  display: inline; 
-}
-
 .nav-menu>li {
+    display: inline-block;
     height: 64px;
     padding: 0px 0px 0px 24px;
 }
@@ -39,7 +33,6 @@ nav ul li ul li a {
 }
 
 .nav-link {
-    align-items: center;
     padding: 5px;
 
 }
@@ -54,6 +47,7 @@ nav ul li ul li a {
 a.sidenav-trigger {
     padding: 0;
     margin: 0;
+    line-height: 64px;
 }
 
 .sidenav li>a {
@@ -174,3 +168,36 @@ h4 {
 
 
 /* MEDIA */
+
+@media only screen and (max-width: 700px) {
+    .row .col.s1 {
+        width: auto;
+    }
+    .row .col.s2 {
+        width: auto;
+    }
+    .row .col.s3 {
+        width: auto;
+    }
+    .row .col.s6 {
+        width: auto;
+    }
+}
+
+@media only screen and (max-width: 539px) {
+    #search-bar {    
+        display: none !important;
+    }
+}
+
+@media only screen and (max-width: 575px) {
+    .row .col.s6 {
+        width: 175px;
+    }
+}
+
+@media only screen and (max-width: 350px) {
+    #nav-button {
+        padding-left: 0;
+    }
+}
