@@ -247,6 +247,33 @@ textarea.materialize-textarea:focus:not([readonly]) {
 }
 
 
+/* MODALS */
+
+.confirm-modal {
+    z-index: 9999 !important;
+    top: 0;
+    bottom: 0;
+    width: fit-content;
+    block-size: fit-content;
+    padding: 15px;
+    overflow: hidden;
+}
+
+.modal .modal-content {
+    padding: 12px;
+}
+
+.confirm-title {
+    margin-top: 12px;
+    margin-bottom: 12px;
+}
+
+.confirm-btn {
+    margin-bottom: 12px;
+    text-shadow: none;
+}
+
+
 /* MEDIA */
 
 @media only screen and (max-width: 700px) {

@@ -11,7 +11,19 @@
                 </div>
                 <div class="col s5">
                     {% if session.user|lower == "director_dad"|lower %}
-                    <a href="" class="btn-small yellow black-text darken-2 right"><p>Done</p></a>
+                    <a href="#confirm{{ film._id }}" class="btn-small red black-text darken-2 right modal-trigger"><p>Delete</p></a>
+
+                        <div id="confirm{{ film._id }}" class="confirm-modal modal card grey darken-4 center-align">
+                            <p class=" confirm-title card-title  white-text center-align ">
+                                        ARE YOU SURE YOU WANT TO DELETE THIS FILM!?</p>
+                            <a class="confirm-btn black-text btn yellow darken-2" href="{{ url_for('get_films') }}">
+                                Cancel
+                            </a>
+                            <a class="confirm-btn black-text btn red" href="{{ url_for('delete_film', film_id=film._id) }}">
+                                Delete
+                            </a>
+                        </div>
+
                     <a href="{{ url_for('edit_film', film_id=film._id) }}" class="btn-small yellow black-text darken-2 right"><p>Edit</p></a>
                     {% endif %}                   
                 </div>
