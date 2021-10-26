@@ -157,6 +157,26 @@ def manage_genres():
     return render_template("genres.html", genres=genres)
 
 
+@app.route("/add_genre", methods=["GET", "POST"])
+def add_genre():
+    if request.method == "POST":
+        genre = {
+            "genre_name": request.form.get("genre_name")
+        }
+        mongo.db.genres.insert_one(genre)
+        flash("New Genre Added")
+        return redirect(url_for("manage_genres"))
+
+    return render_template("add_genre.html")
+
+
+@app.route("/delete_genre/<genre_id>")
+def delete_genre(genre_id):
+    mongo.db.genres.remove({"_id": ObjectId(genre_id)})
+    flash("Genre Successfully Deleted")
+    return redirect(url_for("manage_genres"))
+
+
 if __name__ == "__main__":
     app.run(host=os.environ.get("IP"),
             port=int(os.environ.get("PORT")),

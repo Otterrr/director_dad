@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% block content %}
+
+<h3 class="white-text center-align">Add Genre</h3>
+
+<div class="manage-films row card-panel grey darken-4 ">
+    <form class="col s12" method="POST" action="{{ url_for('add_genre') }}">
+        <!-- GENRE NAME -->
+        <div class="row">
+            <div class="input-field col s12">
+                <i class="fas fa-film prefix"></i>
+                <input id="genre_name" name="genre_name" maxlength="25" type="text" class="validate white-text" required>
+                <label for="genre_name">Title</label>
+            </div>
+        </div>
+
+        <!-- BUTTON -->
+        <div class="row">
+            <div class="col s12 center-align">
+                <button type="submit" id="genre-button" class="btn-large yellow darken-2 waves-effect waves-light">
+                    Add GENRE <i class="fas fa-angle-right angle-right"></i>
+                </button>
+            </div>
+        </div>
+    </form>
+</div>
+
+{% endblock %}
