@@ -10,8 +10,10 @@
                     <strong>{{ film.film_name }}</strong>: {{ film.release_date }}
                 </div>
                 <div class="col s5">
+                    {% if session.user|lower == "director_dad"|lower %}
                     <a href="" class="btn-small yellow black-text darken-2 right"><p>Done</p></a>
-                    <a href="{{ url_for('edit_film', film_id=film._id) }}" class="btn-small yellow black-text darken-2 right"><p>Edit</p></a>                    
+                    <a href="{{ url_for('edit_film', film_id=film._id) }}" class="btn-small yellow black-text darken-2 right"><p>Edit</p></a>
+                    {% endif %}                   
                 </div>
             </div>
             <div class="collapsible-body">

@@ -9,7 +9,8 @@
         <div class="row">
             <div class="input-field col s12">
                 <i class="fas fa-film prefix"></i>
-                <input id="film_name" name="film_name" maxlength="50" type="text" class="validate white-text" required>
+                <input id="film_name" name="film_name" maxlength="50" 
+                value="{{ film.film_name }}" type="text" class="validate white-text" required>
                 <label for="film_name">Title</label>
             </div>
         </div>
@@ -18,9 +19,13 @@
             <div class="input-field col s12">
                 <i class="fas fa-book-open prefix"></i>
                 <select id="genre_name" name="genre_name" class="validate" required>
-                    <option value="" disabled selected>Choose Genre</option>
+                    <option value="" disabled>Choose Genre</option>
                     {% for genre in genres %}
-                        <option value="{{ genre.genre_name }}">{{ genre.genre_name }}</option>
+                        {% if genre.genre_name == film.genre_name %}
+                            <option value="{{ genre.genre_name }}" selected>{{ genre.genre_name }}</option>
+                        {% else %}
+                            <option value="{{ genre.genre_name }}">{{ genre.genre_name }}</option>
+                        {% endif %}
                     {% endfor %}
                 </select>
                 <label for="genre_name"></label>
@@ -33,7 +38,11 @@
                 <select id="release_date" name="release_date" class="validate" required>
                     <option value="" disabled selected>Choose Year</option>
                     {% for release_date in release_dates %}
-                        <option value="{{ release_date.release_date }}">{{ release_date.release_date }}</option>
+                        {% if release_date.release_date == film.release_date %}
+                        <option value="{{ release_date.release_date }}"selected>{{ release_date.release_date }}</option>
+                        {% else %}
+                            <option value="{{ release_date.release_date }}">{{ release_date.release_date }}</option>
+                        {% endif %}
                     {% endfor %}   
                 </select>
                 <label for="release_date"></label>
@@ -43,8 +52,10 @@
         <div class="row">
             <div class="input-field col s12">
                 <i class="fas fa-pen prefix white-text"></i>
-                <textarea id="film_description" name="film_description" minlength="5" maxlength="100"
-                    class="materialize-textarea validate white-text" required></textarea>
+                <textarea id="film_description" name="film_description" minlength="5" maxlength="300"
+                    class="materialize-textarea validate white-text" required>
+                    {{- film.film_description -}}
+                </textarea>
                 <label for="film_description">Description</label>
             </div>
         </div>
@@ -55,7 +66,11 @@
                 <select id="age_rating" name="age_rating" class="validate" required>
                     <option value="" disabled selected>Choose Rating</option>
                     {% for age_rating in age_ratings %}
-                        <option value="{{ age_rating.age_rating }}">{{ age_rating.age_rating }}</option>
+                        {% if age_rating.age_rating == film.age_rating %}
+                        <option value="{{ age_rating.age_rating }}"selected>{{ age_rating.age_rating }}</option>
+                        {% else %}
+                            <option value="{{ age_rating.age_rating }}">{{ age_rating.age_rating }}</option>
+                        {% endif %}
                     {% endfor %}   
                 </select>
                 <label for="age_rating"></label>
@@ -65,13 +80,17 @@
         <div class="row">
             <div class="input-field col s12">
                 <i class="fas fa-clock prefix white-text"></i>
-                <input id="duration" name="duration" maxlength="8" type="text" class="validate white-text" required>
+                <input id="duration" name="duration" maxlength="8" value="{{ film.duration }}" type="text" class="validate white-text" required>
                 <label for="duration">Duration</label>
             </div>
         </div>
-        <!-- BUTTON -->
+        <!-- EDIT BUTTON -->
         <div class="row">
             <div class="col s12 center-align">
+                <!-- CANCEL BUTTON -->
+                <a href="{{ url_for('get_films') }}" class="btn-large red">
+                    Cancel <i class="fas fa times right"></i>
+                </a>
                 <button type="submit" id="genre-button" class="btn-large yellow darken-2 waves-effect waves-light">
                     Edit Film <i class="fas fa-check angle-right"></i>
                 </button>

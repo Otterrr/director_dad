@@ -124,9 +124,24 @@ def manage_films():
 
 @app.route("/edit_film/<film_id>", methods=["GET", "POST"])
 def edit_film(film_id):
+    if request.method == "POST":
+        submit = {
+            "film_name": request.form.get("film_name"),
+            "genre_name": request.form.get("genre_name"),
+            "release_date": request.form.get("release_date"),
+            "film_description": request.form.get("film_description"),
+            "age_rating": request.form.get("age_rating"),
+            "duration": request.form.get("duration"),
+            # "created_by": session["user"]
+        }
+        mongo.db.films.update({"_id": ObjectId(film_id)}, submit)
+        flash("Film Successfully Updated")
+
     film = mongo.db.films.find_one({"_id": ObjectId(film_id)})
     genres = mongo.db.genres.find().sort("genre_name", 1)
-    return render_template("edit_films.html", film=film, genres=genres)
+    release_dates = mongo.db.release_dates.find().sort("release_date", 1)
+    age_ratings = mongo.db.age_ratings.find().sort("age_rating", 1)
+    return render_template("edit_films.html", film=film, genres=genres, release_dates=release_dates, age_ratings=age_ratings)
 
 
 if __name__ == "__main__":

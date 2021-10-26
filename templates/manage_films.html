@@ -53,7 +53,7 @@
             <div class="input-field col s12">
                 <i class="fas fa-list-ol prefix white-text"></i>
                 <select id="age_rating" name="age_rating" class="validate" required>
-                    <option value="" disabled selected>Choose Rating</option>
+                    <option value="" disabled selected>Choose Age Rating</option>
                     {% for age_rating in age_ratings %}
                         <option value="{{ age_rating.age_rating }}">{{ age_rating.age_rating }}</option>
                     {% endfor %}   
