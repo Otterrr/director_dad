@@ -1,10 +1,10 @@
 {% extends "base.html" %}
 {% block content %}
 
-<h3 class="white-text center-align">Manage Films</h3>
+<h3 class="white-text center-align">Edit Films</h3>
 
 <div class="manage-films row card-panel grey darken-4 ">
-    <form class="col s12" method="POST" action="{{ url_for('manage_films') }}">
+    <form class="col s12" method="POST" action="{{ url_for('edit_film', film_id=film._id) }}">
         <!-- FILM NAME -->
         <div class="row">
             <div class="input-field col s12">
@@ -73,7 +73,7 @@
         <div class="row">
             <div class="col s12 center-align">
                 <button type="submit" id="genre-button" class="btn-large yellow darken-2 waves-effect waves-light">
-                    Add Film <i class="fas fa-angle-right angle-right"></i>
+                    Edit Film <i class="fas fa-check angle-right"></i>
                 </button>
             </div>
         </div>

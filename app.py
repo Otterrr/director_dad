@@ -109,14 +109,24 @@ def manage_films():
             "film_description": request.form.get("film_description"),
             "age_rating": request.form.get("age_rating"),
             "duration": request.form.get("duration"),
-            "created_by": session["user"]
+            # "created_by": session["user"]
         }
         mongo.db.films.insert_one(film)
         flash("Film Successfully Added")
         return redirect(url_for("manage_films"))
 
     genres = mongo.db.genres.find().sort("genre_name", 1)
-    return render_template("manage_films.html", genres=genres)
+    release_dates = mongo.db.release_dates.find().sort("release_date", 1)
+    age_ratings = mongo.db.age_ratings.find().sort("age_rating", 1)
+    return render_template("manage_films.html",
+        genres=genres, release_dates=release_dates, age_ratings=age_ratings)
+
+
+@app.route("/edit_film/<film_id>", methods=["GET", "POST"])
+def edit_film(film_id):
+    film = mongo.db.films.find_one({"_id": ObjectId(film_id)})
+    genres = mongo.db.genres.find().sort("genre_name", 1)
+    return render_template("edit_films.html", film=film, genres=genres)
 
 
 if __name__ == "__main__":

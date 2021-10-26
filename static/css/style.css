@@ -172,11 +172,30 @@ h4 {
     font-weight: 600;
 }
 
+.btn-small {
+    margin: 10px 5px 0 5px;
+    text-shadow: none;
+}
+
+.btn-small p {
+    margin: 0;
+    font-weight: 600;
+}
+
+.collapsible-header, .collapsible-header .col strong, .collapsible-header i {
+    margin: 0 5px;
+    line-height: 42px;
+}
+
 .collapsible, .collapsible-header, .collapsible-body {
     border: none !important;
 }
 .collapsible, .collapsible-header, .collapsible-body {
     border-bottom: 3px solid black !important;
+}
+
+select {
+    border: none;
 }
 
 .select-dropdown {
@@ -222,6 +241,7 @@ textarea.materialize-textarea:focus:not([readonly]) {
     color: black;
     font-weight: 700;
 }
+
 
 /* MEDIA */
 
