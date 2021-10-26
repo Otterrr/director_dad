@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+{% block content %}
+
+<body class="grey darken-4">
+
+    <div class="view-films row grey darken-4 ">
+        <!-- FILM NAME -->
+        <div i="film-title" class="col s12">
+            <p class="film-title">
+                <strong>{{ film.film_name }}</a></strong>
+            </p>
+            <ul id="film-info">
+                <li>{{ film.release_date }}</li>
+                -
+                <li>{{ film.age_rating }}</li>
+                -
+                <li>{{ film.duration }}</li>
+            </ul>
+        </div>
+        <div id="breakpoint" class="col s12 grey darken-3">
+        </div>
+        <div class="col s12 okasda">
+            <div>
+                <div id="film-image" class="white">
+                    <!-- FILM IMAGE -->
+                </div>
+                <div>
+                    <p class="film-info"><strong id="film-genre">{{ film.genre_name }}</p></strong>
+                    <p id="film-description">{{ film.film_description }}</p>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+</body>
+
+{% endblock %}

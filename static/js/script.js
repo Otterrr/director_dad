@@ -4,6 +4,13 @@ $(document).ready(function () {
   $('select').formSelect();
   $('.modal').modal();
   $('.trigger-modal').modal();
+  $('input.autocomplete').autocomplete({
+    data: {
+      "No Time to Die": null,
+      "Dune": null,
+      "Free Guy": null,
+    },
+  });
   $('.datepicker').datepicker({
     format: "dd mmmm, yyyy",
     yearRange: 3,

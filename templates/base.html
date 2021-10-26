@@ -19,7 +19,7 @@
 
     <header>
         <!-- top navbar -->
-        <nav id="navbar" class="text-shadow grey darken-4">
+        <nav id="navbar" class="grey darken-4">
             <div class="container">
                 <ul class="nav-menu row">
                     <li class="col s1 center" id="nav-button">
@@ -35,8 +35,8 @@
                     </li>
                     <li id="search-bar" class="col s6 center">
                         <div class="input-field">
-                            <input type="text" id="autocomplete-input" class="white grey-text autocomplete">
-                            <label for="autocomplete-input">Search Films</label>
+                            <input type="text" id="autocomplete-input" class="white black-text autocomplete">
+                            <label class="black-text" for="autocomplete-input">Search Films</label>
                         </div>
                     </li>
                     <li class="col s3 center">
@@ -67,7 +67,7 @@
                 <li><a href="{{ url_for('profile', username=session['user']) }}"><i class="fas fa-user"></i>Profile</a></li>
                 <li><a href="#"><i class="fas fa-pen"></i>New Review</a></li>
                 {% if session.user|lower == "director_dad"|lower %}
-                    <li><a href="{{ url_for('manage_films') }}"><i class="fas fa-cogs"></i>Manage Films</a></li>
+                    <li><a href="{{ url_for('manage_films') }}"><i class="fas fa-cogs"></i>New Film</a></li>
                     <li><a href="{{ url_for('manage_genres') }}"><i class="fas fa-book-open"></i>Manage Genres</a></li>
                 {% endif %}
                 <li><a href="{{ url_for('logout') }}"><i class="fas fa-door-closed"></i>Log Out</a></li>
