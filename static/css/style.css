@@ -246,6 +246,13 @@ textarea.materialize-textarea:focus:not([readonly]) {
     font-weight: 700;
 }
 
+/* GENRES */
+
+
+.card .card-content {
+    padding: 24px 12px 12px 12px;
+}
+
 
 /* MODALS */
 
