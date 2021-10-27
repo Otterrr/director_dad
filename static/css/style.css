@@ -2,6 +2,13 @@
 body {
     background-color: black;
     color: white;
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+}
+
+main {
+    flex: 1 0 auto;
 }
 
 a  {
@@ -14,6 +21,12 @@ a  {
     margin-left: 20px;
     margin-right: 20px;
     margin-bottom: 20px;
+}
+
+.base-container {
+    margin: 0 auto;
+    max-width: 1280px;
+    width: 70%;
 }
 
 /* NAV */
@@ -287,10 +300,21 @@ textarea.materialize-textarea:focus:not([readonly]) {
 
 .view-films {
     background: #212121;
+    margin: 0 20px !important;
+}
+
+.top-space {
+    background-color: black;
+    width: 100%;
+    height: 90px;
 }
 
 #film-title {
-    padding: 24px;
+    padding: 12px 0;
+}
+
+.film-content {
+    padding: 0 !important;
 }
 
 #film-info {
@@ -310,8 +334,8 @@ ul:not(.browser-default)>li {
 }
 
 #film-image {
-    height: 300px;
-    width: 200px;
+    height: 375px;
+    width: 250px;
     margin: 0 6% 6% 0;
     float: left;
 }
@@ -360,6 +384,16 @@ ul:not(.browser-default)>li {
     display: none;   
 }
 
+.film-reviews {
+    height: 500px;
+    width: 100%;
+    background-color: white;
+}
+
+.reviews-bottom-break {
+    margin: 50px 0;
+}
+
 
 
 /* GENRES */
@@ -395,6 +429,42 @@ ul:not(.browser-default)>li {
     text-shadow: none;
 }
 
+/* FOOTER */
+
+.page-footer {
+    background-color: black;
+    margin-top: 0;
+    padding-top: 80px;
+}
+
+.footer-break {
+    background-color: #212121;
+    height: 70px;
+    width: 100%;
+    padding-top: 19px;
+}
+
+.footer-header h5 {
+    margin-top: 30px;
+}
+
+.footer-header {
+    margin-bottom: 0;
+    text-transform: uppercase;
+}
+
+.footer-copyright {
+    text-transform: uppercase;
+    background: linear-gradient(to right, black, #070707, #070707, black);
+}
+
+
+.grey-text.text-lighten-3 {
+    padding: 10px;
+    color: #eee !important;
+    font-size: 18px;
+}
+
 
 /* MEDIA */
 
@@ -419,12 +489,18 @@ ul:not(.browser-default)>li {
 }
 
 
-@media only screen and (max-width: 700px) {
+@media only screen and (max-width: 750px) {
     .row .col.s1, .row .col.s2, .row .col.s3, .row .col.s6 {
         width: auto;
     }
     h3 {
         font-size: 2rem;
+    }
+    #film-image {
+        height: 300px;
+        width: 200px;
+        margin: 0 6% 6% 0;
+        float: left;
     }
 }
 

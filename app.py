@@ -104,18 +104,17 @@ def new_review():
     if request.method == "POST":
         review = {
             "film_name": request.form.get("film_name"),
-            "watched_date": request.form.get("watched_date"),
+            "date_watched": request.form.get("date_watched"),
             "film_rating": request.form.get("film_rating"),
             "film_review": request.form.get("film_review"),
             "created_by": session["user"],
         }
-        mongo.db.films.insert_one(review)
+        mongo.db.reviews.insert_one(review)
         flash("Review Successfully Added")
         return redirect(url_for("new_review"))
 
     films = mongo.db.films.find().sort("film_name", 1)
     ratings = mongo.db.ratings.find().sort("ratings", 1)
-
     return render_template("new_review.html",
         films=films, ratings=ratings)
 

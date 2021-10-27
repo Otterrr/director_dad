@@ -1,63 +1,64 @@
 {% extends "base.html" %}
 {% block content %}
 
-<h3 class="white-text center-align">New Review</h3>
+<div class="container">
+    <h3 class="white-text center-align">New Review</h3>
 
-<div class="manage-films row card-panel grey darken-4 ">
-    <form class="col s12" method="POST" action="{{ url_for('new_review') }}">
-        <!-- FILM NAME -->
-        <div class="row">
-            <div class="input-field col s12">
-                <i class="fas fa-book-open prefix"></i>
-                <select id="film_name" name="film_name" class="validate" required>
-                    <option value="" disabled selected>Choose Film</option>
-                    {% for film in films %}
+    <div class="row card-panel grey darken-4 ">
+        <form class="col s12" method="POST" action="{{ url_for('new_review') }}">
+            <!-- FILM NAME -->
+            <div class="row">
+                <div class="input-field col s12">
+                    <i class="fas fa-book-open prefix"></i>
+                    <select id="film_name" name="film_name" class="validate" required>
+                        <option value="" disabled selected>Choose Film</option>
+                        {% for film in films %}
                         <option value="{{ film.film_name }}">{{ film.film_name }}</option>
-                    {% endfor %}
-                </select>
-                <label for="film_name"></label>
+                        {% endfor %}
+                    </select>
+                    <label for="film_name"></label>
+                </div>
             </div>
-        </div>
 
-        <!-- FILM REVIEW -->
-        <div class="row">
-            <div class="input-field col s12">
-                <i class="fas fa-pen prefix white-text"></i>
-                <textarea id="film_review" name="film_review" minlength="1" maxlength="200"
-                    class="materialize-textarea validate white-text" required></textarea>
-                <label for="film_review">Review</label>
+            <!-- FILM REVIEW -->
+            <div class="row">
+                <div class="input-field col s12">
+                    <i class="fas fa-pen prefix white-text"></i>
+                    <textarea id="film_review" name="film_review" minlength="1" maxlength="200"
+                        class="materialize-textarea validate white-text" required></textarea>
+                    <label for="film_review">Review</label>
+                </div>
             </div>
-        </div>
-        <!-- WATCHED DATE -->
-        <div class="row">
-            <div class="input-field col s12">
-                <i class="fas fa-calendar prefix white-text"></i>
-                <input id="date_watched" name="date_watched" class="datepicker validate" required></input>
-                <label for="date_watched">Date Watched</label>
+            <!-- WATCHED DATE -->
+            <div class="row">
+                <div class="input-field col s12">
+                    <i class="fas fa-calendar prefix white-text"></i>
+                    <input id="date_watched" name="date_watched" class="datepicker validate" required></input>
+                    <label for="date_watched">Date Watched</label>
+                </div>
             </div>
-        </div>
-        <!-- FILM RATING -->
-        <div class="row">
-            <div class="input-field col s12">
-                <i class="fas fa-list-ol prefix white-text"></i>
-                <select id="film_rating" name="film_rating" class="validate" required>
-                    <option value="" disabled selected>Rating</option>
-                    {% for rating in ratings %}
+            <!-- FILM RATING -->
+            <div class="row">
+                <div class="input-field col s12">
+                    <i class="fas fa-list-ol prefix white-text"></i>
+                    <select id="film_rating" name="film_rating" class="validate" required>
+                        <option value="" disabled selected>Rating</option>
+                        {% for rating in ratings %}
                         <option value="{{ rating.film_rating }}">{{ rating.film_rating }}</option>
-                    {% endfor %}   
-                </select>
-                <label for="film_rating"></label>
+                        {% endfor %}
+                    </select>
+                    <label for="film_rating"></label>
+                </div>
             </div>
-        </div>
-        <!-- BUTTON -->
-        <div class="row">
-            <div class="col s12 center-align">
-                <button type="submit" id="genre-button" class="btn-large yellow darken-2 waves-effect waves-light">
-                    Add Review <i class="fas fa-angle-right angle-right"></i>
-                </button>
+            <!-- BUTTON -->
+            <div class="row">
+                <div class="col s12 center-align">
+                    <button type="submit" id="genre-button" class="btn-large yellow darken-2 waves-effect waves-light">
+                        Add Review <i class="fas fa-angle-right angle-right"></i>
+                    </button>
+                </div>
             </div>
-        </div>
-    </form>
+        </form>
+    </div>
 </div>
-
 {% endblock %}

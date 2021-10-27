@@ -36,12 +36,14 @@
                     <li id="search-bar" class="col s6 center">
                         <div class="input-field">
 
-                            <input type="text" id="autocomplete-input" class="white black-text autocomplete" data-target="autocomplete-options-4f3e3812-6cd2-eff4-1e9f-4453d1ef5f11">
-                            <ul id="autocomplete-options-4f3e3812-6cd2-eff4-1e9f-4453d1ef5f11" class="autocomplete-content dropdown-content" tabindex="0">
+                            <input type="text" id="autocomplete-input" class="white black-text autocomplete"
+                                data-target="autocomplete-options-4f3e3812-6cd2-eff4-1e9f-4453d1ef5f11">
+                            <ul id="autocomplete-options-4f3e3812-6cd2-eff4-1e9f-4453d1ef5f11"
+                                class="autocomplete-content dropdown-content" tabindex="0">
                                 <li>
                                     <span>
                                         <span>
-                                            
+
                                         </span>
                                     </span>
                                 </li>
@@ -75,43 +77,81 @@
                 <a href="{{ url_for('get_films') }}"><i class="fas fa-film"></i>Films</a>
             </li>
             {% if session.user %}
-                <li><a href="{{ url_for('profile', username=session['user']) }}"><i class="fas fa-user"></i>Profile</a></li>
-                <li><a href="{{ url_for('new_review') }}"><i class="fas fa-pen"></i>New Review</a></li>
-                {% if session.user|lower == "director_dad"|lower %}
-                    <li><a href="{{ url_for('manage_films') }}"><i class="fas fa-cogs"></i>New Film</a></li>
-                    <li><a href="{{ url_for('manage_genres') }}"><i class="fas fa-book-open"></i>Manage Genres</a></li>
-                {% endif %}
-                <li><a href="{{ url_for('logout') }}"><i class="fas fa-door-closed"></i>Log Out</a></li>
+            <li><a href="{{ url_for('profile', username=session['user']) }}"><i class="fas fa-user"></i>Profile</a></li>
+            <li><a href="{{ url_for('new_review') }}"><i class="fas fa-pen"></i>New Review</a></li>
+            {% if session.user|lower == "director_dad"|lower %}
+            <li><a href="{{ url_for('manage_films') }}"><i class="fas fa-cogs"></i>New Film</a></li>
+            <li><a href="{{ url_for('manage_genres') }}"><i class="fas fa-book-open"></i>Manage Genres</a></li>
+            {% endif %}
+            <li><a href="{{ url_for('logout') }}"><i class="fas fa-door-closed"></i>Log Out</a></li>
             {% else %}
-                <li><a href="{{ url_for('login') }}"><i class="fas fa-door-open"></i>Log In</a></li>
-                <li><a href="{{ url_for('register') }}"><i class="fas fa-hand-paper"></i>Sign Up</a></li>
+            <li><a href="{{ url_for('login') }}"><i class="fas fa-door-open"></i>Log In</a></li>
+            <li><a href="{{ url_for('register') }}"><i class="fas fa-hand-paper"></i>Sign Up</a></li>
             {% endif %}
         </ul>
     </header>
-    <div class="container">
-        <section>
-            <!-- flash messages -->
-            {% with messages = get_flashed_messages() %}
-            {% if messages %}
-            {% for message in messages %}
-            <div class="row flashes">
-                <h4 class="grey darken-4 center-align">{{ message }}</h4>
-            </div>
-            {% endfor %}
-            {% endif%}
-            {% endwith %}
-        </section>
-    
-        <main class="films"></main>
+    <section class="container">
+        <!-- flash messages -->
+        {% with messages = get_flashed_messages() %}
+        {% if messages %}
+        {% for message in messages %}
+        <div class="row flashes">
+            <h4 class="grey darken-4 center-align">{{ message }}</h4>
+        </div>
+        {% endfor %}
+        {% endif%}
+        {% endwith %}
+    </section>
+
+    <main class="films">
         {% block content%}
         {% endblock %}
-        <script src="https://code.jquery.com/jquery-3.6.0.min.js"
-            integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-        <script src="{{ url_for('static', filename='js/script.js') }}"></script>
-        {% block scripts %}
-        {% endblock %}
-    </div>
+    </main>
+    <footer class="page-footer">
+        <div class="footer-break">
+            <div class="center">
+                <a href="{{ url_for('get_films') }}">
+                    <button id="director-dad"
+                        class="btn yellow darken-2 black-text waves-effect waves-light">Director<br>Dad</button>
+                </a>
+            <div>
+        </div>
+        <div class="container center-align">
+            <div class="footer-header row">
+                <div class="col s12">
+                    <h5 class="white-text">Director Dad</h5>
+                </div>
+                <div class="col s12">
+                    <ul>
+                        <li>
+                            <a class="grey-text text-lighten-3" href="https://www.facebook.com/"><i class="fab fa-facebook-square"></i></a>
+                        </li>
+                        <li>
+                            <a class="grey-text text-lighten-3" href="https://www.instagram.com/"><i class="fab fa-instagram"></i></a>
+                        </li>
+                        <li>
+                            <a class="grey-text text-lighten-3" href="https://twitter.com/home"><i class="fab fa-twitter"></i></a>
+                        </li>
+                        <li>
+                            <a class="grey-text text-lighten-3" href="https://www.youtube.com/"><i class="fab fa-youtube"></i></a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="footer-copyright">
+            <div class="container center-align">
+                © 2021 Director Dad
+                <a class="grey-text text-lighten-4 right" href="#!"></a>
+            </div>
+        </div>
+    </footer>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"
+        integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+    {% block scripts %}
+    {% endblock %}
 </body>
 
 </html>
