@@ -20,7 +20,7 @@
     <header>
         <!-- top navbar -->
         <nav id="navbar" class="grey darken-4">
-            <div class="container">
+            <div class="nav-container">
                 <ul class="nav-menu row">
                     <li class="col s1 center" id="nav-button">
                         <a href="#" data-target="mobile-demo" class="sidenav-trigger show-on-large"><i id="fas-bars"
@@ -35,11 +35,22 @@
                     </li>
                     <li id="search-bar" class="col s6 center">
                         <div class="input-field">
-                            <input type="text" id="autocomplete-input" class="white black-text autocomplete">
+
+                            <input type="text" id="autocomplete-input" class="white black-text autocomplete" data-target="autocomplete-options-4f3e3812-6cd2-eff4-1e9f-4453d1ef5f11">
+                            <ul id="autocomplete-options-4f3e3812-6cd2-eff4-1e9f-4453d1ef5f11" class="autocomplete-content dropdown-content" tabindex="0">
+                                <li>
+                                    <span>
+                                        <span>
+                                            
+                                        </span>
+                                    </span>
+                                </li>
+                            </ul>
+
                             <label class="black-text" for="autocomplete-input">Search Films</label>
                         </div>
                     </li>
-                    <li class="col s3 center">
+                    <li id="login-out" class="col s3 center">
                         <ul>
                             {% if session.user %}
                             <li><a href="{{ url_for('logout') }}">Log Out</a></li>

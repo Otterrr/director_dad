@@ -132,6 +132,7 @@ def view_films(film_id):
             "film_description": request.form.get("film_description"),
             "age_rating": request.form.get("age_rating"),
             "duration": request.form.get("duration"),
+            "film_image": request.form.get("film_image"),
             # "created_by": session["user"]
         }
         mongo.db.films.update({"_id": ObjectId(film_id)}, submit)

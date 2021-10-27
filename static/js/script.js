@@ -10,7 +10,21 @@ $(document).ready(function () {
       "Dune": null,
       "Free Guy": null,
     },
+    onAutocomplete: function(val) {
+      var value = $('input.autocomplete').val();
+
+      if(value == "Dune"){
+        var link = open('https://8080-black-tiglon-4tn2fyxj.ws-eu18.gitpod.io/view_films/6177271fdc188d91fa0c1d2f', '_self');
+
+      } else if(value == "Free Guy"){
+        var link = open('https://8080-black-tiglon-4tn2fyxj.ws-eu18.gitpod.io/view_films/617726c4dc188d91fa0c1d2e', '_self')
+      
+      } else if(value == "No Time to Die"){
+        var link = open('https://8080-black-tiglon-4tn2fyxj.ws-eu18.gitpod.io/view_films/616eacc871dc8003743d58d7', '_self')
+      }
+    }
   });
+
   $('.datepicker').datepicker({
     format: "dd mmmm, yyyy",
     yearRange: 3,
