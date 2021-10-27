@@ -114,7 +114,8 @@ def new_review():
         return redirect(url_for("new_review"))
 
     films = mongo.db.films.find().sort("film_name", 1)
-    ratings = mongo.db.ratings.find().sort("film_rating", 1)
+    ratings = mongo.db.ratings.find().sort("ratings", 1)
+
     return render_template("new_review.html",
         films=films, ratings=ratings)
 
@@ -136,7 +137,7 @@ def manage_films():
 
     genres = mongo.db.genres.find().sort("genre_name", 1)
     release_dates = mongo.db.release_dates.find().sort("release_date", 1)
-    age_ratings = mongo.db.age_ratings.find().sort("age_rating", 1)
+    age_ratings = mongo.db.age_ratings.find().sort("age_ratings", 1)
     return render_template("manage_films.html",
         genres=genres, release_dates=release_dates, age_ratings=age_ratings)
 

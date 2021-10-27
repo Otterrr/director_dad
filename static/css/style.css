@@ -333,6 +333,35 @@ ul:not(.browser-default)>li {
     font-weight: 100px;
 }
 
+/* REVIEWS */
+
+.datepicker {
+    color: white;
+}
+
+.datepicker-container {
+    background-color: #212121;
+}
+
+.datepicker-date-display {
+    background-color: black;
+}
+
+.datepicker-table td.is-today, .datepicker-done, .datepicker-cancel {
+    color: #fbc02d;
+}
+
+.datepicker-table td.is-selected, .datepicker-table td.is-selected:focus {
+    pointer-events: none;
+    background-color: #fbc02d;
+}
+
+.datepicker .input-field label:not(label-icon).active {
+    display: none;   
+}
+
+
+
 /* GENRES */
 
 .card .card-content {
