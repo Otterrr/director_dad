@@ -76,7 +76,7 @@
             </li>
             {% if session.user %}
                 <li><a href="{{ url_for('profile', username=session['user']) }}"><i class="fas fa-user"></i>Profile</a></li>
-                <li><a href="#"><i class="fas fa-pen"></i>New Review</a></li>
+                <li><a href="{{ url_for('new_review') }}"><i class="fas fa-pen"></i>New Review</a></li>
                 {% if session.user|lower == "director_dad"|lower %}
                     <li><a href="{{ url_for('manage_films') }}"><i class="fas fa-cogs"></i>New Film</a></li>
                     <li><a href="{{ url_for('manage_genres') }}"><i class="fas fa-book-open"></i>Manage Genres</a></li>

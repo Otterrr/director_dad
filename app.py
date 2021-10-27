@@ -99,6 +99,26 @@ def logout():
     return redirect(url_for("login"))
 
 
+@app.route("/new_review", methods=["GET", "POST"])
+def new_review():
+    if request.method == "POST":
+        review = {
+            "film_name": request.form.get("film_name"),
+            "watched_date": request.form.get("watched_date"),
+            "film_rating": request.form.get("film_rating"),
+            "film_review": request.form.get("film_review"),
+            "created_by": session["user"],
+        }
+        mongo.db.films.insert_one(review)
+        flash("Review Successfully Added")
+        return redirect(url_for("new_review"))
+
+    films = mongo.db.films.find().sort("film_name", 1)
+    ratings = mongo.db.ratings.find().sort("film_rating", 1)
+    return render_template("new_review.html",
+        films=films, ratings=ratings)
+
+
 @app.route("/manage_films", methods=["GET", "POST"])
 def manage_films():
     if request.method == "POST":
@@ -109,7 +129,6 @@ def manage_films():
             "film_description": request.form.get("film_description"),
             "age_rating": request.form.get("age_rating"),
             "duration": request.form.get("duration"),
-            # "created_by": session["user"]
         }
         mongo.db.films.insert_one(film)
         flash("Film Successfully Added")
