@@ -11,7 +11,7 @@
                     <strong>{{ film.film_name }}</strong>: {{ film.release_date }}
                 </div>
                 <div class="col s5">
-                    {% if session.user|lower == "director_dad"|lower %}
+                    {% if ( (session.user|lower == "director_dad"|lower) or (session.user|lower == film.created_by|lower) ) %}
                     <a href="#confirm{{ film._id }}" class="btn-small red black-text darken-2 right modal-trigger">
                         <p>Delete</p>
                     </a>
