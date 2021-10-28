@@ -34,14 +34,17 @@
                     {% endif %}
                 </div>
             </div>
-            <div class="collapsible-body">
-                <p class="film-title"><strong>
-                        <a href="{{ url_for('view_films', film_id=film._id) }}">{{ film.film_name }}</a>
-                    </strong></p>
-                <strong> {{ film.release_date }} - {{ film.age_rating }} - {{ film.duration }}</strong>
-                <br>
-                <p>{{ film.genre_name }}</p>
-                <p>{{ film.film_description }}</p>
+            <div class="row collapsible-body">
+                <img class="col m6 hide-on-small-only display-image" src="{{ film.film_image }}" alt="movie-poster">
+                <div class="col s12 m6">
+                    <p class="film-title">
+                        <strong><a href="{{ url_for('view_films', film_id=film._id) }}">{{ film.film_name }}</a></strong>
+                    </p>
+                    <strong> {{ film.release_date }} - {{ film.age_rating }} - {{ film.duration }}</strong>
+                    <br>
+                    <p>{{ film.genre_name }}</p>
+                    <p>{{ film.film_description }}</p>
+                </div>
             </div>
         </li>
         {% endfor %}

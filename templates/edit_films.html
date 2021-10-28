@@ -37,7 +37,7 @@
                 <div class="input-field col s12">
                     <i class="fas fa-calendar prefix white-text"></i>
                     <select id="release_date" name="release_date" class="validate" required>
-                        <option value="" disabled selected>Choose Year</option>
+                        <option value="" disabled>Choose Year</option>
                         {% for release_date in release_dates %}
                         {% if release_date.release_date == film.release_date %}
                         <option value="{{ release_date.release_date }}" selected>{{ release_date.release_date }}
@@ -66,7 +66,7 @@
                 <div class="input-field col s12">
                     <i class="fas fa-list-ol prefix white-text"></i>
                     <select id="age_rating" name="age_rating" class="validate" required>
-                        <option value="" disabled selected>Choose Rating</option>
+                        <option value="" disabled>Choose Rating</option>
                         {% for age_rating in age_ratings %}
                         {% if age_rating.age_rating == film.age_rating %}
                         <option value="{{ age_rating.age_rating }}" selected>{{ age_rating.age_rating }}</option>
@@ -76,6 +76,14 @@
                         {% endfor %}
                     </select>
                     <label for="age_rating"></label>
+                </div>
+            </div>
+            <!-- FILM IMAGE -->
+            <div class="row">
+                <div class="input-field col s12">
+                    <i class="fas fa-images prefix white-text"></i>
+                    <input id="film_image" name="film_image" maxlength="200" value="{{ film.film_image }}" type="url" class="validate white-text" required>
+                    <label for="film_image">Image URL:</label>
                 </div>
             </div>
             <!-- FILM DURATION -->

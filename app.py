@@ -1,3 +1,4 @@
+"""Director_Dad"""
 import os
 from flask import (
     Flask, flash, render_template,
@@ -22,12 +23,19 @@ mongo = PyMongo(app)
 @app.route("/")
 @app.route("/get_films")
 def get_films():
+    """
+    function to create main page / film storage - this is where the user will
+    land and where the home button will take them to
+    """
     films = mongo.db.films.find()
     return render_template("films.html", films=films)
 
 
 @app.route("/register", methods=["GET", "POST"])
 def register():
+    """
+    register page function
+    """
     if request.method == "POST":
         # check if username exists in db
         existing_user = mongo.db.users.find_one(
@@ -37,11 +45,11 @@ def register():
             flash("Username already exists")
             return redirect(url_for("register"))
 
-        register = {
+        signup = {
             "username": request.form.get("username").lower(),
             "password": generate_password_hash(request.form.get("password"))
         }
-        mongo.db.users.insert_one(register)
+        mongo.db.users.insert_one(signup)
 
         # put the new user into 'session' cookie
         session["user"] = request.form.get("username").lower()
@@ -52,8 +60,11 @@ def register():
 
 @app.route("/login", methods=["GET", "POST"])
 def login():
+    """
+    login page function
+    """
     if request.method == "POST":
-        # check user exists in db
+        # check for user exists in db
         existing_user = mongo.db.users.find_one(
             {"username": request.form.get("username").lower()})
 
@@ -72,7 +83,7 @@ def login():
                 return redirect(url_for("login"))
 
         else:
-            # username doesn't existing_user
+            # username doesn't exist
             flash("Incorrect Username and/or Password")
             return redirect(url_for("login"))
 
@@ -81,7 +92,9 @@ def login():
 
 @app.route("/profile/<username>", methods=["GET", "POST"])
 def profile(username):
-    # grab username from db
+    """
+    profile page function
+    """
     username = mongo.db.users.find_one(
         {"username": session["user"]})["username"]
 
@@ -93,7 +106,9 @@ def profile(username):
 
 @app.route("/logout")
 def logout():
-    # remove user from cookies
+    """
+    logout function - no page - just removed the user cookie
+    """
     flash("You have been logged out")
     session.pop("user")
     return redirect(url_for("login"))
@@ -101,6 +116,9 @@ def logout():
 
 @app.route("/new_review", methods=["GET", "POST"])
 def new_review():
+    """
+    new film review function
+    """
     if request.method == "POST":
         review = {
             "film_name": request.form.get("film_name"),
@@ -117,11 +135,14 @@ def new_review():
     films = mongo.db.films.find().sort("film_name", 1)
     ratings = mongo.db.ratings.find().sort("ratings", 1)
     return render_template("new_review.html",
-        films=films, ratings=ratings)
+                           films=films, ratings=ratings)
 
 
 @app.route("/edit_review/<review_id>", methods=["GET", "POST"])
 def edit_review(review_id):
+    """
+    edit review function
+    """
     if request.method == "POST":
         submit = {
             "film_name": request.form.get("film_name"),
@@ -141,6 +162,9 @@ def edit_review(review_id):
 
 @app.route("/delete_review/<review_id>")
 def delete_review(review_id):
+    """
+    delete review function
+    """
     mongo.db.reviews.remove({"_id": ObjectId(review_id)})
     flash("Review Successfully Deleted")
     return redirect(url_for('get_films'))
@@ -148,6 +172,9 @@ def delete_review(review_id):
 
 @app.route("/manage_films", methods=["GET", "POST"])
 def manage_films():
+    """
+    new film function
+    """
     if request.method == "POST":
         film = {
             "film_name": request.form.get("film_name"),
@@ -167,11 +194,15 @@ def manage_films():
     release_dates = mongo.db.release_dates.find().sort("release_date", 1)
     age_ratings = mongo.db.age_ratings.find().sort("age_ratings", 1)
     return render_template("manage_films.html",
-        genres=genres, release_dates=release_dates, age_ratings=age_ratings)
+                           genres=genres, release_dates=release_dates,
+                           age_ratings=age_ratings)
 
 
 @app.route("/view_films/<film_id>")
 def view_films(film_id):
+    """
+    view specific film function based on film_id
+    """
     if request.method == "POST":
         submit = {
             "film_name": request.form.get("film_name"),
@@ -191,6 +222,9 @@ def view_films(film_id):
 
 @app.route("/edit_film/<film_id>", methods=["GET", "POST"])
 def edit_film(film_id):
+    """
+    edit film function
+    """
     if request.method == "POST":
         submit = {
             "film_name": request.form.get("film_name"),
@@ -198,6 +232,7 @@ def edit_film(film_id):
             "release_date": request.form.get("release_date"),
             "film_description": request.form.get("film_description"),
             "age_rating": request.form.get("age_rating"),
+            "film_image": request.form.get("film_image"),
             "duration": request.form.get("duration"),
             "created_by": session["user"]
         }
@@ -208,11 +243,16 @@ def edit_film(film_id):
     genres = mongo.db.genres.find().sort("genre_name", 1)
     release_dates = mongo.db.release_dates.find().sort("release_date", 1)
     age_ratings = mongo.db.age_ratings.find().sort("age_rating", 1)
-    return render_template("edit_films.html", film=film, genres=genres, release_dates=release_dates, age_ratings=age_ratings)
+    return render_template("edit_films.html", film=film, genres=genres,
+                           release_dates=release_dates,
+                           age_ratings=age_ratings)
 
 
 @app.route("/delete_film/<film_id>")
 def delete_film(film_id):
+    """
+    delete film function
+    """
     mongo.db.films.remove({"_id": ObjectId(film_id)})
     flash("Film Successfully Deleted")
     return redirect(url_for("get_films"))
@@ -220,12 +260,18 @@ def delete_film(film_id):
 
 @app.route("/manage_genres")
 def manage_genres():
+    """
+    page of genres for Admin to view - function
+    """
     genres = list(mongo.db.genres.find().sort("genre_name", 1))
     return render_template("genres.html", genres=genres)
 
 
 @app.route("/add_genre", methods=["GET", "POST"])
 def add_genre():
+    """
+    new genre function
+    """
     if request.method == "POST":
         genre = {
             "genre_name": request.form.get("genre_name")
@@ -239,6 +285,9 @@ def add_genre():
 
 @app.route("/delete_genre/<genre_id>")
 def delete_genre(genre_id):
+    """
+    delete genre function
+    """
     mongo.db.genres.remove({"_id": ObjectId(genre_id)})
     flash("Genre Successfully Deleted")
     return redirect(url_for("manage_genres"))

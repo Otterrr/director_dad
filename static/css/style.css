@@ -110,7 +110,7 @@ a.sidenav-trigger {
     pointer-events: auto;
 }
 
-#director-dad {
+.director-dad {
     top: -3px;
     font-size: 16px;
     font-weight: 700;
@@ -167,17 +167,15 @@ nav .input-field label {
 
 /* FLASHES */
 
-.flashes h4 {
+h4 {
     line-height: 2;
+    text-transform: uppercase;
 }
 
 .text-shadow {
     text-shadow: 2px 2px 2px rgba(0,0,0,0.5)
 }
 
-h4 {
-    text-transform: uppercase;
-}
 
 
 /* SIGN-UP */
@@ -315,6 +313,10 @@ textarea.materialize-textarea:focus:not([readonly]) {
     padding: 12px 0;
 }
 
+.display-image {
+    width: 300px !important;
+}
+
 #film-title strong a {
     color: black !important;
 }
@@ -360,7 +362,7 @@ ul:not(.browser-default)>li {
 
 #film-description {
     font-size: 16px;
-    font-weight: 100px;
+    font-weight: 100;
 }
 
 /* REVIEWS */
@@ -377,8 +379,16 @@ ul:not(.browser-default)>li {
     background-color: black;
 }
 
-.datepicker-table td.is-today, .datepicker-done, .datepicker-cancel {
+.datepicker-done, .datepicker-cancel, .datepicker-selected.secondary-color {
     color: #fbc02d;
+}
+
+.datepicker-table td.is-today {
+    color: red;
+}
+
+svg {
+    fill: white;
 }
 
 .datepicker-table td.is-selected, .datepicker-table td.is-selected:focus {
@@ -386,8 +396,10 @@ ul:not(.browser-default)>li {
     background-color: #fbc02d;
 }
 
-.datepicker .input-field label:not(label-icon).active {
-    display: none;   
+.calendar label {
+    transform: translateY(-12px);
+    font-size: 12px;
+    color: white !important;
 }
 
 .film-reviews {
@@ -407,7 +419,6 @@ ul:not(.browser-default)>li {
 }
 .reviews-top {
     border-bottom: none !important;
-    border: 1px solid grey;
     background-color: rgb(255, 254, 246);
 }
 
@@ -520,7 +531,7 @@ ul:not(.browser-default)>li {
 }
 
 
-@media only screen and (max-width: 750px) {
+@media only screen and (max-width: 760px) {
     .row .col.s1, .row .col.s2, .row .col.s3, .row .col.s6 {
         width: auto;
     }
@@ -533,6 +544,10 @@ ul:not(.browser-default)>li {
         margin: 0 6% 6% 0;
         float: left;
     }
+    #display-image {
+        width: 200px;
+    }
+    
 }
 
 @media only screen and (max-width: 539px) {
@@ -568,7 +583,7 @@ ul:not(.browser-default)>li {
     
     #film-description {
         font-size: 14px;
-        font-weight: 100px;
+        font-weight: 100;
     }
 
 }
@@ -591,7 +606,7 @@ ul:not(.browser-default)>li {
     
     #film-description {
         font-size: 12px;
-        font-weight: 100px;
+        font-weight: 100;
     }
 
 }
@@ -618,7 +633,7 @@ ul:not(.browser-default)>li {
     
     #film-description {
         font-size: 16px;
-        font-weight: 100px;
+        font-weight: 100;
     }
 }
 
