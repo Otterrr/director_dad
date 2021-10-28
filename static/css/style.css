@@ -236,15 +236,17 @@ h4 {
 }
 
 .collapsible-header, .collapsible-header .col strong, .collapsible-header i {
-    margin: 0 5px;
+    margin: 5px;
     line-height: 42px;
 }
 
-.collapsible, .collapsible-header, .collapsible-body {
-    border: none !important;
+.collapsible-body {
+    margin: 5px;
 }
+
 .collapsible, .collapsible-header, .collapsible-body {
-    border-bottom: 3px solid black !important;
+    border: none;
+    box-shadow: none;
 }
 
 select {
@@ -311,6 +313,10 @@ textarea.materialize-textarea:focus:not([readonly]) {
 
 #film-title {
     padding: 12px 0;
+}
+
+#film-title strong a {
+    color: black !important;
 }
 
 .film-content {
@@ -385,8 +391,33 @@ ul:not(.browser-default)>li {
 }
 
 .film-reviews {
-    height: 500px;
     width: 100%;
+    background-color: white;
+    padding-bottom: 50px;
+}
+
+.reviews-header{
+    font-weight: 500;
+    margin: 0;
+    padding: 30px 5px 15px;
+}
+
+.review-rating {
+    font-size: 18px;
+}
+.reviews-top {
+    border-bottom: none !important;
+    border: 1px solid grey;
+    background-color: rgb(255, 254, 246);
+}
+
+.reviews-bottom {
+    border-top: none !important;
+    border: 1px solid grey;
+}
+
+.reviews-top-break {
+    margin: 25px 0;
     background-color: white;
 }
 

@@ -106,6 +106,7 @@ def new_review():
             "film_name": request.form.get("film_name"),
             "date_watched": request.form.get("date_watched"),
             "film_rating": request.form.get("film_rating"),
+            "review_title": request.form.get("review_title"),
             "film_review": request.form.get("film_review"),
             "created_by": session["user"],
         }
@@ -117,6 +118,32 @@ def new_review():
     ratings = mongo.db.ratings.find().sort("ratings", 1)
     return render_template("new_review.html",
         films=films, ratings=ratings)
+
+
+@app.route("/edit_review/<review_id>", methods=["GET", "POST"])
+def edit_review(review_id):
+    if request.method == "POST":
+        submit = {
+            "film_name": request.form.get("film_name"),
+            "date_watched": request.form.get("date_watched"),
+            "film_rating": request.form.get("film_rating"),
+            "review_title": request.form.get("review_title"),
+            "film_review": request.form.get("film_review"),
+            "created_by": session["user"],
+        }
+        mongo.db.reviews.update({"_id": ObjectId(review_id)}, submit)
+        flash("Review Successfully Updated")
+
+    review = mongo.db.reviews.find_one({"_id": ObjectId(review_id)})
+    ratings = mongo.db.ratings.find().sort("ratings", 1)
+    return render_template("edit_review.html", review=review, ratings=ratings)
+
+
+@app.route("/delete_review/<review_id>")
+def delete_review(review_id):
+    mongo.db.reviews.remove({"_id": ObjectId(review_id)})
+    flash("Review Successfully Deleted")
+    return redirect(url_for('get_films'))
 
 
 @app.route("/manage_films", methods=["GET", "POST"])
@@ -156,8 +183,9 @@ def view_films(film_id):
         }
         mongo.db.films.update({"_id": ObjectId(film_id)}, submit)
 
+    reviews = mongo.db.reviews.find()
     film = mongo.db.films.find_one({"_id": ObjectId(film_id)})
-    return render_template("view_films.html", film=film)
+    return render_template("view_films.html", film=film, reviews=reviews)
 
 
 @app.route("/edit_film/<film_id>", methods=["GET", "POST"])

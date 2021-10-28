@@ -1,0 +1,70 @@
+{% extends "base.html" %}
+{% block content %}
+
+<div class="container">
+    <h3 class="white-text center-align">Edit Review</h3>
+
+    <div class="row card-panel grey darken-4 ">
+        <form class="col s12" method="POST" action="{{ url_for('edit_review', review_id=review._id) }}">
+            <!-- FILM NAME -->
+            <div class="row">
+                <div class="input-field col s12">
+                    <i class="fas fa-film prefix"></i>
+                    <input id="film_name" name="film_name" maxlength="50" value="{{ review.review_title }}" type="text"
+                        class="validate white-text" required>
+                    <label for="film_name">Title</label>
+                </div>
+            </div>
+            <!-- FILM REVIEW -->
+            <div class="row">
+                <div class="input-field col s12">
+                    <i class="fas fa-pen prefix white-text"></i>
+                    <textarea id="film_review" name="film_review" minlength="1" maxlength="200"
+                        class="materialize-textarea validate white-text" required>
+                        {{- review.film_review -}}
+                    </textarea>
+                    <label for="film_review">Review</label>
+                </div>
+            </div>
+            <!-- WATCHED DATE -->
+            <div class="row">
+                <div class="input-field col s12">
+                    <i class="fas fa-calendar prefix white-text"></i>
+                    <input id="date_watched" name="date_watched" value="{{ review.date_watched }}" class="datepicker validate" required></input>
+                    <label for="date_watched">Date Watched</label>
+                </div>
+            </div>
+            <!-- FILM RATING -->
+            <div class="row">
+                <div class="input-field col s12">
+                    <i class="fas fa-list-ol prefix white-text"></i>
+                    <select id="film_rating" name="film_rating" class="validate" required>
+                        <option value="" disabled selected>Rating</option>
+                        {% for rating in ratings %}
+                        {% if rating.film_rating == review.film_rating %}
+                        <option value="{{ rating.film_rating }}" selected>{{ rating.film_rating }}</option>
+                        {% else %}
+                        <option value="{{ rating.film_rating }}">{{ rating.film_rating }}</option>
+                        {% endif %}
+                        <option value="{{ rating.film_rating }}">{{ rating.film_rating }}</option>
+                        {% endfor %}
+                    </select>
+                    <label for="film_rating"></label>
+                </div>
+            </div>
+            <!-- EDIT BUTTON -->
+            <div class="row">
+                <div class="col s12 center-align">
+                    <!-- CANCEL BUTTON -->
+                    <a href="{{ url_for('get_films') }}" class="btn-large red">
+                        Cancel <i class="fas fa times right"></i>
+                    </a>
+                    <button type="submit" id="genre-button" class="btn-large yellow darken-2 waves-effect waves-light">
+                        Edit Review <i class="fas fa-check angle-right"></i>
+                    </button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock %}

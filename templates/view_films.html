@@ -34,6 +34,58 @@
         </div>
     </div>
     <div class="film-reviews">
+        <div class="container">
+            <div class="row">
+                <h3 class="reviews-header black-text">Reviews</h5>
+            </div>
+            <ul>
+                {% for review in reviews %}
+                <li>
+                    <div class="reviews-top card-panel black-text">
+                        <div class="row">
+                            <div class="col s12">
+                                <h6>{{ review.film_name }}</h6>
+                            </div>
+                            <div class="col s12 m6">{{ review.review_title }}</div>
+                            <div class="col s12 m6"><em>by: {{ review.created_by }}</em> - <strong>{{ review.date_watched }}</strong></div>
+                            <div class="col s12">
+                                <p>{{ review.film_review }}</p>
+                                </div>
+                            <div class="review-rating col s12 m6">
+                                <strong>{{ review.film_rating }}/10</strong>
+                            </div>
+                            <div class="col s12 m6">
+                                {% if ( (session.user|lower == "director_dad"|lower) or (session.user|lower == review.created_by|lower) ) %}
+                                <a href="#confirm{{ review._id }}"
+                                    class="btn-small red black-text darken-2 right modal-trigger">
+                                    <p>Delete</p>
+                                </a>
+                                <div id="confirm{{ review._id }}"
+                                    class="confirm-modal modal card grey darken-4 center-align">
+                                    <p class=" confirm-title card-title  white-text center-align ">
+                                        ARE YOU SURE YOU WANT TO DELETE THIS REVIEW!?</p>
+                                    <a class="confirm-btn black-text btn yellow darken-2"
+                                        href="{{ url_for('view_films', film_id=film._id) }}">
+                                        Cancel
+                                    </a>
+                                    <a class="confirm-btn black-text btn red"
+                                        href="{{ url_for('delete_review', review_id=review._id) }}">
+                                        Delete
+                                    </a>
+                                </div>
+                                <a href="{{ url_for('edit_review', review_id=review._id) }}"
+                                    class="btn-small yellow black-text darken-2 right">
+                                    <p>Edit</p>
+                                </a>
+                                {% endif %}
+                            </div>
+
+                        </div>
+                    </div>
+                </li>
+                {% endfor %}
+            </ul>
+        </div>
     </div>
     <div class="reviews-bottom-break"></div>
 </body>
