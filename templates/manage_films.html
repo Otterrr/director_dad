@@ -5,7 +5,7 @@
     <h3 class="white-text center-align">New Film</h3>
 
     <div class="manage-films row card-panel grey darken-4 ">
-        <form class="col s12" method="POST" action="{{ url_for('manage_films') }}">
+        <form class="col s12" method="POST" action="{{ url_for('manage_films') }}" enctype="multipart/form-data">
             <!-- FILM NAME -->
             <div class="row">
                 <div class="input-field col s12">
@@ -69,6 +69,14 @@
                     <i class="fas fa-clock prefix white-text"></i>
                     <input id="duration" name="duration" maxlength="8" type="text" class="validate white-text" required>
                     <label for="duration">Duration</label>
+                </div>
+            </div>
+            <!-- FILM IMAGE -->
+            <div class="row">
+                <div class="input-field col s12">
+                    <i class="fas fa-images prefix white-text"></i>
+                    <input id="image" name="image" maxlength="200" type="text" class="validate white-text" required>
+                    <label for="image">Image URL:</label>
                 </div>
             </div>
             <!-- BUTTON -->

@@ -156,6 +156,7 @@ def manage_films():
             "film_description": request.form.get("film_description"),
             "age_rating": request.form.get("age_rating"),
             "duration": request.form.get("duration"),
+            "film_image": request.form.get("film_image"),
             "created_by": session["user"],
         }
         mongo.db.films.insert_one(film)
