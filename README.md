@@ -97,13 +97,13 @@ My wireframes were created using [Balsamiq](https://balsamiq.com/).
 
 As i knew that I wanted my website to look as similar to IMDB as possible my wireframes were based off of one of their generic film pages. Due to my ability limitations I was unable to get videos or as many images, ads, links, interviews and the large amount of media they have associated to each film, so it ended up being a much simpler version in the end.
 
-![Example Film Page](.png)
+![Example Film Page](static/images/director_dad_film_page.png)
 
 As stated above, IMDB has so much media associated with each film, the trailers, interviews, screenshots, premier shots, that I am unable to feesible include in my own version. Therefore the final product is alot simpler than that of IMDB.
 
 The films page is quite similar as it was based off of the "task manger" mini project I created before starting my final project.
 
-![Films Library](.png)
+![Films Library](static/images/director_dad_main_page.png)
 
 # Features 
 
