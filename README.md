@@ -251,7 +251,7 @@ Forking is the action of creating a copy of the original file on your own GitHub
 ## Making a Local Clone
 
 1. Log in to GitHub and find the GitHub Repository you wish to use.
-2. At the top of the Repository, below the Repository title, click "Clone or download"
+2. At the top of the Repository, above the most recent commit, click "Code" then choose your option for Cloning.
 3. To clone using HTTPS, copy the link under "Clone with HTTPS".
 4. Now open Git Bash.
 5. Choose the location you wish to save the cloned directory.
@@ -265,13 +265,13 @@ Forking is the action of creating a copy of the original file on your own GitHub
 
 ```
 $ git clone https://github.com/Otterrr/director_dad.git
-> Cloning into `The-Memory-Game`...
-> remote: Enumerating objects: 96, done.
-> remote: Counting objects: 100% (96/96), done.
-> remote: Compressing objects: 100% (70/70), done.
-> remote: Total 206 (delta 26), reused 82 (delta 15), pack-reused 110
-> Receiving objects: 100% (206/206), 237.46 MiB | 12.31 MiB/s, done.
-> Resolving deltas: 100% (57/57), done.
+> Cloning into 'director_dad'...
+> remote: Enumerating objects: 330, done.
+> remote: Counting objects: 100% (330/330), done.
+> remote: Compressing objects: 100% (189/189), done.
+> remote: Total 330 (delta 182), reused 247 (delta 103), pack-reused 0
+> Receiving objects: 100% (330/330), 8.67 MiB | 11.68 MiB/s, done.
+> Resolving deltas: 100% (182/182), done.
 ```
  
 # Credits
