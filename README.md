@@ -300,4 +300,4 @@ Various functions and code snippets were adapted upon from the mini-project as w
 * [Materialize](https://materializecss.com/)
 * [Slack](https://slack.com/intl/en-gb/)
 * [W3Schools](https://www.w3schools.com/)
-* [Stack Overflow](https://stackoverflow.com/)
+* [Stack Overflow](https://stackoverflow.com/).
