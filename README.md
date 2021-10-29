@@ -228,17 +228,50 @@ The developer can also simply search for the film or click on the film to be tak
 
 2. For the Website testing, I made myself a new account and acted like a new user. I signed up, logged in and started "browsing" the website. I added a new review to "Free Guy" which was simple without any problems, then saw it appear below the film on that specific page. There were the options to edit or delete this review but not for the others. It all worked as expected. On the side menu I was unable to see the genres page (as this is for admin only) and could not see any buttons to edit/delete the films.
 
+3. Just before submitting my project I took a visit to see my family. I asked them all to create a profile on my website and try to explore it and leave some reviews. It was drawn to my attention that when on a films page, there was no direct button/link to leave a review and users would instead have to use the link on the side navbar. I of course therefore added a link onto the view_films pages to make it more intuative.
+
+4. I also found out that the autocomplete links were not working since deploying my project to Heroku. I had to therefore manually change all links to the Heroku versions instead of github.
+
 # Deployments
 
-## GitHub Pages
+## Heroku
 
-This project was deployed to GitHub Pages through the following steps:
+This project was deployed to Heroku through the following steps:
 
-1. Log into GitHub and find the GitHub Repository.
-2. At the top of the Repository, below the Repository title, find the "Settings" button in the menu.
-3. Click on the "Pages" section near the bottom.
-4. In the "Source" heading, click "None" and select the "Main Branch".
-5. This will refresh your page. Now you will see the link in the "GitHub Pages" section.
+1. Create a "requirements.txt" file using the terminal command "pip freeze > requirements.txt".
+
+2. Create a "Profile" with the terminal command "echo web: pythong app.py > Procfile".
+
+3. git "add" and "git commit" the requiremnts.txt and Procfile, then "git push" to GitHub.
+
+4. Create a new app on the [Heroku](https://www.heroku.com/) website by clicking "New" button in your dashboard. Give it a name and set the region to Europe.
+
+5. From the Heroku dashboard of the new app, click on "Deploy" > "Deployment method" and select Github.
+
+6. Confirm the linking of the Heroku app to the correct GitHub repository.
+
+7. In the Heroku dashboard for the application, click on "Settings" > "Reveal Config Vars".
+
+8. Set the following config vars: 
+```
+    DEBUG : FALSE
+
+    IP : 0.0.0.0
+
+    MONGO_URI : "mongodb+srv://<username>:<password>@<cluster_name>-qtxun.mongodb.net/<database_name>/retyWrites=true&w=majority"
+
+    PORT : 5000
+
+    SECRET_KEY : <your_secret_key>
+```
+- To get your MONGO_URI read the MongoDB Atlas documentation [here](https://docs.atlas.mongodb.com/getting-started/).
+
+9. In the Heroku dashboard, click "Deploy".
+
+10. In the "Manual Deployment" section of this page, make sure the master branch is selected and then click "Deploy Branch".
+
+11. The site is now successfully deployed.
+
 
 ## Forking the GitHub Repository
 

@@ -35,6 +35,9 @@
     <div class="container">
         <div class="row">
             <h3 class="reviews-header black-text">Reviews</h3>
+            <a href="{{ url_for('new_review') }}" class="btn-small yellow black-text darken-2">
+                <p>Create Review</p>
+            </a>
         </div>
         <ul>
             {% for review in reviews if review.film_name == film.film_name %}
