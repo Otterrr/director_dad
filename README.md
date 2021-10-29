@@ -236,9 +236,9 @@ This project was deployed to GitHub Pages through the following steps:
 
 1. Log into GitHub and find the GitHub Repository.
 2. At the top of the Repository, below the Repository title, find the "Settings" button in the menu.
-3. Scroll down to find the "GitHub Pages" section.
-4. In the "Source" heading, click "None" and select the "Master Branch".
-5. This will refresh your page. Now scroll down again to find the link in the "GitHub Pages" section.
+3. Click on the "Pages" section near the bottom.
+4. In the "Source" heading, click "None" and select the "Main Branch".
+5. This will refresh your page. Now you will see the link in the "GitHub Pages" section.
 
 ## Forking the GitHub Repository
 
@@ -298,6 +298,6 @@ Various functions and code snippets were adapted upon from the mini-project as w
 * [Font Awesome](https://fontawesome.com)
 * [Code Institute](https://learn.codeinstitute.net/courses)
 * [Materialize](https://materializecss.com/)
-* [Slack](https://slack.com/intl/en-gb/) - for help from other students
+* [Slack](https://slack.com/intl/en-gb/)
 * [W3Schools](https://www.w3schools.com/)
 * [Stack Overflow](https://stackoverflow.com/)
