@@ -73,7 +73,7 @@ This website was styled of off the famour IMDB with their white, grey and black 
 
 #### Fonts
 
-* No fonts were used, only the default font that is used with materialize. I mainly customised the sizing and weight of the fonts to allow different elements to stand out.
+* No fonts were imported from google fonts, only the default font that is used with materialize. I mainly customised the sizing and weight of the fonts to allow different elements to stand out.
 
 #### Icons
 
@@ -129,7 +129,10 @@ The films page is quite similar as it was based off of the "task manger" mini pr
 * HTML 
 * CSS
 * JS
-* [Materialize](https://materializecss.com/
+* PYTHON / FLASK
+* MONGO DB - to store my data in databases to be edited / created by users on the website.
+* HEROKU - to deploy my final website to.
+* [Materialize](https://materializecss.com)
     - Materialize was amazing in creating this project. Their pre-made layouts, css, js initialisation and overall framwork, made customising this website alot of fun.
 * [Font Awesome](https://fontawesome.com/)
     - FA used to implement all the icons for improving UX and the website design.
@@ -184,26 +187,36 @@ The developer can also simply search for the film or click on the film to be tak
 ### ON THE GO TESTING / PROBLEMS
 
 1. HTML/CSS 
+    - It had been a little while since I had customised my own CSS. The main difficulties I found was trying to customised the already heavily customised materialize content. Changing the colours or finding out which customisation was stored where via materialize took up a large portion of my "css'ing". A large majority of the css in my style.css file is css used to counter-act the css created by materialize.
+    - However using the materialize grid and container system really did help the website come to life in no time at all. I also really enjoyed using some of their features that I had never used before such as datepicker as well as the usual forms, select, navbar & sidenav elements.
 
-2. COLOUR SCHEME 
+2. COLOUR SCHEME
+    - Similarly to the css issues I had from materializes' defaults, I struggled sometimes to see which element and at which state the colours were being applied. Still to this moment I am unsure the best way to completely change the colours of their custom elements.
 
+3. NAVBAR / SIDEBAR
+    - As I was basing the nav bar / side bar styling off IMDB, it took my a while to be happy with the centralised layout of the navbar, battling with containers and padding in order to get it how I liked. I ended up opting for most of my links in the sidebar to give the top navbar a cleaner look.
 
-3. FLIPPING 
+4. SEARCH BAR 
+    - I decided to use an autocomplete navbar from Materialize instead of the search function from the mini-project. I always use autocomplete search functions in my day-to-day life, so wanted to try one of my own. At first I was unsure how to add each piece of data into the search script but after following the materialize documentation, I worked out how to add each film to the search function using the data object options.
 
-4. COUNTER 
+5. FILM PAGES
+    - I wanted each film to have its own page that would hold the reviews and potentially (eventually) more images or more information about that film. It didn't take me long for me to work out how to re-use the same function that I used to edit my films & reviews, by brining up a new page specific film, to instead bring up this page.
 
-5. TIMER 
+6. FILM IMAGES 
+    - I ideally wanted to bring some life and colour to my project in the form of movie posters (credit to IMDB). I started out by manually adding each of them. Once I (a user) had added a new film, I would manually add the film_image id into mongodb to make the film image appear on the page. I had already created a space for the image to be, but if a user other than myself was to create a film, they would not have access to mongodb so the film would never get an image. I was unhappy with this and wanted the users to be able to upload their own image. I therefore added a new form input where users could supply a URL link to the film image. This, didn't work at first, the id came up as null. This stumped my unfortunately and I had to take it to slack. Another member of the community pointed out that I had my input type as text where it should be url. I'm sure that this did help but it still didn't work at this point. Foolishly I realised that I had the wrong name, id and label id of image... when it should have been film_image, to match my mongodb id name. When meticulously checking over every detail I noticed that my mongodb id name was different and problem solved.
+    Applying this same image to the main films page on medium size screens and above was simple. Just copy the same code across from the view pages and adjust the size of the film!
 
-6. GAMEOVER FUNCTION 
+7. ADMIN CONTROL
+    - I wanted the admin to be able to have control over other peoples reviews and film submissions. Therefore I tweaked the code from {% if ( (session.user|lower == film.created_by|lower) %} to {% if ( (session.user|lower == "director_dad"|lower) or (session.user|lower == film.created_by|lower) ) %} to allow not only the specific user to be able to edit their entried but the admin to have full control over the website.
 
-7. TIMINGS 
+8. FILM SPECIFIC REVIEWS
+    - When I first added the reviews to the view_films pages, every review was showing on every film page. This was because I used the same function that was showing every film on the film page, a simple{% for review in reviews %}. I couldn't work out how to show only the reviews specific to that film. I made use of Code Institutes Tutor Support to push me in the right direction. He suggested to and an if loop to my for loop to loop through whether or not the film_name == review.film_name. Simple stuff when you think about it. The final code I came up with was {% for review in reviews if review.film_name == film.film_name %}. This used both a for loop and if loop in one. It turned out perfect!
 
-8. THE NEXT GAME 
+9. COLLECTION ORDERS
+    - For some reason I decided to add the film ratings (out of 10), my dates (2019, 2020 & 2021) and my age ratings (U, PG, 12A etc) as collections (instead of just manually having the options on the necessary forms). The caused issues as the materialize select options were automatically sorting them, or maybe it was my .sort() function in python... Either way, I wanted them sorted the way I had created them not in alphabetical order. This turned out to be a very simple fix that I coincidentally worked out whilst the tutor was trying to work it out himself. (this seemed to happen alot - Rubber Ducky Theory?) It was simple as adding an "s". Turns out I was targeting the individual ratings not the collection as a whole.
 
-9. Whilst playing the card, and having my girlfriend play it a couple of times... 
-
-10. COMPATABILITY 
-
+10. MEDIA QUERIES
+    - A struggle with every project, making sure it works on mobile devices as well as desktop. Most of the media queries were created early on when creating the navbar and sign-up forms. I had to make sure that my navbar elements were not overlapping and looking to cluttered on the small size screens and phones. I chose to remove the search function and main page images on smaller screens. This caused a lot of clutter and push the text and title too far down the screen potentially causing a bad ux.
 
 
 
@@ -211,9 +224,9 @@ The developer can also simply search for the film or click on the film to be tak
 
 * Once I felt I had completed this project, I took the project to the browser to complete some further testing and complete the lighthouse testing.
 
-1. For the Lighthouse testing,
+1. For the Lighthouse testing, all of my pages came out with scores of 90+. I added a meta-description which I had forgotten and checked that all my colours worked well and that my page was loading well and that all my links were appropriate for screen readers.
 
-2. For the Website testing,
+2. For the Website testing, I made myself a new account and acted like a new user. I signed up, logged in and started "browsing" the website. I added a new review to "Free Guy" which was simple without any problems, then saw it appear below the film on that specific page. There were the options to edit or delete this review but not for the others. It all worked as expected. On the side menu I was unable to see the genres page (as this is for admin only) and could not see any buttons to edit/delete the films.
 
 # Deployments
 
@@ -245,13 +258,13 @@ Forking is the action of creating a copy of the original file on your own GitHub
 6. Type `git clone`, then paste the URL copied in Step 3.
 
 ```
-    $ git clone https://github.com/Otterrr/The-Memory-Game.git
+    $ git clone https://github.com/Otterrr/director_dad.git
 ```
 
 7. Press Enter. Your local clone will be created.
 
 ```
-$ git clone https://github.com/Otterrr/The-Memory-Game.git
+$ git clone https://github.com/Otterrr/director_dad.git
 > Cloning into `The-Memory-Game`...
 > remote: Enumerating objects: 96, done.
 > remote: Counting objects: 100% (96/96), done.
@@ -263,30 +276,28 @@ $ git clone https://github.com/Otterrr/The-Memory-Game.git
  
 # Credits
 
-* [Freecodecamp.org](https://www.youtube.com/watch?v=ZniVgo8U7ek)
-* [Web-Dev-Simplified](https://www.youtube.com/watch?v=28VfzEiJgy4)
-* [PortEXE](https://www.youtube.com/watch?v=3uuQ3g92oPQ&t=3041s)
-* [Ania-Kubów](https://www.youtube.com/watch?v=tjyDOHzKN0w)
-* [Scotch.io](https://scotch.io/tutorials/how-to-build-a-memory-matching-game-in-javascript)
+* [Code Institute](https://learn.codeinstitute.net/courses) - specifically The Mini Project task_manager.
+* [Materialziecss](https://materializecss.com/)
+* [IMDB](https://www.imdb.com/)No code was used from IMDB but the project was inspired by their website. Images were also used from their films. Full credit goes to IMDB. Images were used for creative purposes only.
 
-Various functions and code snippets were adapted upon from the above sources. All code was typed by hand and functions and variables were renamed for my own project.
+Various functions and code snippets were adapted upon from the mini-project as well as materialize. All code was typed by hand and functions and variables were renamed for my own project.
 
 # Content
 
-* Fonts were sourced from Google Fonts. https://fonts.google.com/
-    - All text was written by myself.
+* Default fonts were used with Materialize.
 
 # Media
 
-* All images were sourced from Font Awesome https://fontawesome.com/
+* All images were sourced from IMDB. Full credit goes to IMDB. Images were used for creative purposes only. [IMDB](https://www.imdb.com/)
+* Icons were sourced from Font Awesome.[Font Awesome](https://fontawesome.com)
 
 # Acknowledgements
 
-* [Google Fonts](https://fonts.google.com/)
+* [IMDB](https://www.imdb.com/)
 * [Github Pages](https://pages.github.com/)
 * [Font Awesome](https://fontawesome.com)
 * [Code Institute](https://learn.codeinstitute.net/courses)
-* [Booststrap](https://getbootstrap.com/docs/5.0/customize/components/)
-* [Pexels](https://www.pexels.com/)
+* [Materialize](https://materializecss.com/)
+* [Slack](https://slack.com/intl/en-gb/) - for help from other students
 * [W3Schools](https://www.w3schools.com/)
 * [Stack Overflow](https://stackoverflow.com/)

@@ -10,12 +10,13 @@
                     <i class="fas fa-angle-down"></i>
                     <strong>{{ film.film_name }}</strong>: {{ film.release_date }}
                 </div>
+                <!-- ADMIN / USER BUTTONS -->
                 <div class="col s5">
                     {% if ( (session.user|lower == "director_dad"|lower) or (session.user|lower == film.created_by|lower) ) %}
                     <a href="#confirm{{ film._id }}" class="btn-small red black-text darken-2 right modal-trigger">
                         <p>Delete</p>
                     </a>
-
+                    <!-- DELETE CONFIRMATION MODAL -->
                     <div id="confirm{{ film._id }}" class="confirm-modal modal card grey darken-4 center-align">
                         <p class=" confirm-title card-title  white-text center-align ">
                             ARE YOU SURE YOU WANT TO DELETE THIS FILM!?</p>
@@ -26,7 +27,6 @@
                             Delete
                         </a>
                     </div>
-
                     <a href="{{ url_for('edit_film', film_id=film._id) }}"
                         class="btn-small yellow black-text darken-2 right">
                         <p>Edit</p>

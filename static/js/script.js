@@ -1,3 +1,4 @@
+/* JQUERY STRUCTURE USED FROM CODE INSTITUTE MINI PROJECT TUTORIAL - CODE FROM MATERIALIZE */
 $(document).ready(function () {
   $('.sidenav').sidenav();
   $('.collapsible').collapsible();
@@ -5,6 +6,7 @@ $(document).ready(function () {
   $('.modal').modal();
   $('.trigger-modal').modal();
   $("#normal_search").val('');
+  /* AUTOCOMPLETE FROM MATERIALIZE */
   $('input.autocomplete').autocomplete({
     data: {
       "No Time to Die": null,
@@ -116,7 +118,7 @@ $(document).ready(function () {
   });
 
 
-  /* USED TO HIDE MATERIALIZE DEFAULT SELECT ELEMENT AND APPLY OWN CUSTOM SELECT VALIDATION */
+  /* USED TO HIDE MATERIALIZE DEFAULT SELECT ELEMENT AND APPLY OWN CUSTOM SELECT VALIDATION AS RECOMMENDED TO DO IN CODE INSTITUTE MINI PROJECT*/
 
   validateMaterializeSelect();
 
